@@ -1,0 +1,19 @@
+.jumbotron {
+    background-image: url(../asset/images/jumbotron.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 20px;
+    margin: 50px;
+    height: 247px;
+    align-content: center;
+}
+
+form {
+    align-content: center;
+    margin: 50px;
+}
+
+card {
+    align-content: center;
+    margin: 50px;
+}
