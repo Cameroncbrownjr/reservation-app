@@ -12,34 +12,84 @@
 </head>
 
 <body>
-  <div class="jumbotron">
-    <h1 class="display-4">Hello, Restaurant!</h1>
-    <p class="lead"> Please make a reservation
-        <a class="btn btn-primary btn-lg" href="#" role="button" onclick="myFunction()">View Tables</a>
-        <a class="btn btn-primary btn-lg" href="#" role="button" onclick="myFunction()">Make a reservation</a>
-  </div>
-  <form>
-    <div class="form-group">
-      <label for="InputName">Name</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="name">
 
-    </div>
-    <div class="form-group">
-      <label for="InputPhone">Phone No.</label>
-      <input type="number" class="form-control" id="phoneNumber" placeholder="Phone Number">
-    </div>
-    <div class="form-group">
-      <label for="inputEmail">Email:</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="email">
-
-    </div>
-    <div class="form-group">
-      <label for="Uniquename">Unique Name</label>
-      <input type="Uname" class="form-control" id="uniqueName" placeholder="Unique Name">
-    </div>
-
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+        <div class="jumbotron">
+                <h1 class="display-4">Hello, Restaurant!</h1>
+                <p class="lead"> Please make a reservation
+                <a class="btn btn-primary btn-lg" href="#" role="button">View Tables</a>
+                <a class="btn btn-primary btn-lg" href="/api/tables" role="button">Make a reservation</a>
+              </div>
+              <form>
+                    <div class="form-group">
+                      <label for="InputName">Name</label>
+                      <input type="text" class="form-control" id="name"  placeholder="name">
+                  
+                    </div>
+                    <div class="form-group">
+                      <label for="InputPhone">Phone No.</label>
+                      <input type="number" class="form-control" id="phoneNumber" placeholder="Phone Number">
+                    </div>
+                    <div class="form-group">
+                      <label for="inputEmail">Email:</label>
+                      <input type="email" class="form-control" id="email"  placeholder="email">
+                  
+                    </div>
+                    <div class="form-group">
+                      <label for="Uniquename">Unique Name</label>
+                      <input type="Uname" class="form-control" id="uniqueName" placeholder="Unique Name">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+                  <script type="text/javascript">
+                    // In this code below we create the Front-end JavaScript which "POSTS" our form data to our express server.
+                    // In essence, when the user hits submit, jQuery grabs all of the fields then sends a post request to our api
+                    // Our api recognizes the route (/api/tables)... and then runs the associated code (found in api-routes.js).
+                    // In this case the associated code "saves" the data to the table-data.js file or waitinglist-data.js file
+                  
+                    $(".submit").on("click", function(event) {
+                      event.preventDefault();
+                  
+                      // Here we grab the form elements
+                      var newReservation = {
+                        customerName: $("#name").val().trim(),
+                        phoneNumber: $("#phoneNumber").val().trim(),
+                        customerEmail: $("#email").val().trim(),
+                        customerID: $("#uniqueName").val().trim()
+                      };
+                  
+                      console.log(newReservation);
+                  
+                      // This line is the magic. It"s very similar to the standard ajax function we used.
+                      // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
+                      // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
+                      // depending on if a tables is available or not.
+                  
+                      $.post("/api/tables", newReservation,
+                        function(data) {
+                  
+                          // If a table is available... tell user they are booked.
+                          if (data) {
+                            alert("You are officially booked!");
+                          }
+                  
+                          // If a table is available... tell user they on the waiting list.
+                          else {
+                            alert("Sorry, there were already five reservations in front of you. You have been added to the wait list");
+                          }
+                  
+                          // Clear the form when submitting
+                          $("#name").val("");
+                          $("#phoneNumber").val("");
+                          $("#email").val("");
+                          $("#uniqueName").val("");
+                  
+                        });
+                  
+                    });
+                  
+                  </script>
+ 
 
 </body>
 
