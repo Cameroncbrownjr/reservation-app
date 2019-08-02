@@ -1,0 +1,92 @@
+Delivered-To: aidiko20@gmail.com
+Received: by 2002:a5d:488b:0:0:0:0:0 with SMTP id g11csp7399365wrq;
+        Thu, 1 Aug 2019 09:37:24 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyODxI0nNdmwefvyW+8QU4YvhacUIcWsApiiyiLqlOH4NqM24GndJ1SL3oH84SL4zvt8dzC
+X-Received: by 2002:a0c:ba8f:: with SMTP id x15mr93561542qvf.212.1564677444224;
+        Thu, 01 Aug 2019 09:37:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564677444; cv=none;
+        d=google.com; s=arc-20160816;
+        b=r5ERtEMIHkFhLokZS0Du9Co0JO9osNWb89mLAsVJEztczm71XDSfseng5MkGDw/CcW
+         9siQsJPXccLxP8HW3k78oAUArSSHc2kaoc0RrRazopFtXVCZZ5cjg1xFrHUtdDXzeyXZ
+         uy2NDiVJJi6NOCAKlT8JIrVymD7xBN6yIMWJjG2hvGsTOhM+niKDNUkTn4n0pE2d/rwX
+         BlLtFJTUp1KA7tcMlPA2VVVSF9JMz0KBREE6MO2Vt7dBYabvMrPGXZEK2CvXRZVWq29t
+         4Q3JnOKOWSPCYde/sm0cKUCOIONuvNUUS+vGM8UTXvySCLg87aU2z3M/vKRDE+eXN92V
+         n6GQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:date:message-id:content-transfer-encoding:mime-version
+         :subject:to:from:dkim-signature:dkim-signature;
+        bh=wi9AzHOsBDWm0mzTNDmDl5ZHbjndv5N7wIkJQZRMUp0=;
+        b=S7kohHszQGzAOzDzh08MAGzBvsdyNqNWq8RaF1tZ6eTX/yUY2yOYObsawcZu+ehUMX
+         f3vfu6ihxjfExnhNNMeM5SivTZwulqKuRG4rVlHlTCUs2WIp6EySxGgxWNhVIStqFf7V
+         iBXFKsklW3dHuIFNiuPE8TASxLl8HckwjP+Q8rIPVFbFMKarg3WCK7iMC8xoDy4K0Qvf
+         qoOUsZ0GZwIe9K4j486Jvf8MsSVHmlPdZm1Uy8GLU3a6F41iG1Pi/qThuxhElK7A/TrT
+         G8ptmglxYgCGwD/tioKw215CUPxG4KbZBkYcn2cHwOIcAgQ5fgzLfOVRJe4fuXsHUq6D
+         vVOQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@freecodecamp.org header.s=jtjdx4nyfqc5cdwspbchobvswbkptq5f header.b=Zau9+ksB;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=G2eSk2g9;
+       spf=pass (google.com: domain of 0100016c4e0b10e8-f4815481-c027-4902-b3c6-84450fe2fef0-000000@amazonses.com designates 54.240.11.86 as permitted sender) smtp.mailfrom=0100016c4e0b10e8-f4815481-c027-4902-b3c6-84450fe2fef0-000000@amazonses.com
+Return-Path: <0100016c4e0b10e8-f4815481-c027-4902-b3c6-84450fe2fef0-000000@amazonses.com>
+Received: from a11-86.smtp-out.amazonses.com (a11-86.smtp-out.amazonses.com. [54.240.11.86])
+        by mx.google.com with ESMTPS id n26si3534477qkg.165.2019.08.01.09.37.24
+        for <aidiko20@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 01 Aug 2019 09:37:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 0100016c4e0b10e8-f4815481-c027-4902-b3c6-84450fe2fef0-000000@amazonses.com designates 54.240.11.86 as permitted sender) client-ip=54.240.11.86;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@freecodecamp.org header.s=jtjdx4nyfqc5cdwspbchobvswbkptq5f header.b=Zau9+ksB;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=G2eSk2g9;
+       spf=pass (google.com: domain of 0100016c4e0b10e8-f4815481-c027-4902-b3c6-84450fe2fef0-000000@amazonses.com designates 54.240.11.86 as permitted sender) smtp.mailfrom=0100016c4e0b10e8-f4815481-c027-4902-b3c6-84450fe2fef0-000000@amazonses.com
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=jtjdx4nyfqc5cdwspbchobvswbkptq5f; d=freecodecamp.org;
+	t=1564677443;
+	h=From:To:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-ID:Date;
+	bh=wi9AzHOsBDWm0mzTNDmDl5ZHbjndv5N7wIkJQZRMUp0=;
+	b=Zau9+ksBMbh0fuSG4Z77LyzQsob5Vkb+vQWpLl1E6NBVVvGy+G/nYgIlYe0F7Nlb
+	bdr17MHlyHByzoFrUyid8I7flFwK/5wLo6rt835bbxNWHroa8HRlXltnoe8gryry6kh
+	AQiXmX4ZVwjW7ZsbJ2Km7YBdT+x9XanB2WXLj+/g=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1564677443;
+	h=From:To:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-ID:Date:Feedback-ID;
+	bh=wi9AzHOsBDWm0mzTNDmDl5ZHbjndv5N7wIkJQZRMUp0=;
+	b=G2eSk2g9MEZkErf1+HLr13Lc/C4LrvZ9mwT6nOfzADIuhI/aUlqPKKuOKNVGuSVL
+	qtScS63AafoFJCp5QzLFhFewXJFYM/AcA4vdJiepnZGaE/2t3eajQRBsW+0aBffuetA
+	tCkNrM7EZhmxdw0URdD4EGLJpL7Y124T/DdS9c38=
+From: Quincy Larson <quincy@freecodecamp.org>
+To: aidiko20@gmail.com
+Subject: The best JavaScript meme I've ever seen, explained in detail
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Message-ID: <0100016c4e0b10e8-f4815481-c027-4902-b3c6-84450fe2fef0-000000@email.amazonses.com>
+Date: Thu, 1 Aug 2019 16:37:23 +0000
+X-SES-Outgoing: 2019.08.01-54.240.11.86
+Feedback-ID: 1.us-east-1.41/tcizCMVGagr201XyDxUntKcp5mevBaYU74GEdLHg=:AmazonSES
+
+Here are this week's five links that are worth your time:
+
+1. The Best JavaScript meme I've ever seen, explained in detail (4 minute read): https://www.freecodecamp.org/news/explaining-the-best-javascript-meme-i-have-ever-seen/
+
+2. We just published a free in-depth course on penetration testing. Learn dozens of Linux tools and cybersecurity concepts. (15 hour watch): https://www.freecodecamp.org/news/full-penetration-testing-course/
+
+3. freeCodeCamp's YouTube channel recently passed 1 million subscribers. How did we do it? We share all the secrets we learned over the past 4 years, so you can launch your own programming channel if you want. (25 minute read): https://www.freecodecamp.org/news/how-to-start-a-software-youtube-channel/
+
+4. We just re-designed Code Radio. Now you can listen in your media player of choice, and control playback and volume from your keyboard. (5 minute read): https://www.freecodecamp.org/news/play-code-radio-on-vlc/
+
+5. When she was 11 years old, Linh moved from Vietnam to England. She didn't even speak English. But she taught herself to code using freeCodeCamp, and now she works as a developer at Lego (yes - that Lego) in London. On this week's podcast, she talks about her coding journey and her new life. (1 hour listen): https://www.freecodecamp.org/news/podcast-from-biochemical-engineer-to-software-engineer-at-lego/
+
+
+Quote of the Week: "The first 90% of the code accounts for the first 90% of the development time. The remaining 10% of the code accounts for the other 90% of the development time." - Tom Cargill
+
+
+freeCodeCamp will always be free. But it costs a lot of money for us to run it. Make a tax-deductible donation to our nonprofit today: https://donate.freecodecamp.org
+
+
+Happy coding.
+
+- Quincy Larson
+
+Teacher at freeCodeCamp.org
+
+
+If these emails aren't worth your time, you can turn them off: https://www.freecodecamp.org/ue/FhBmlrLNir3cPTc9805N
